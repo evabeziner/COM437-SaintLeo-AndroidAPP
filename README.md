@@ -145,7 +145,11 @@ Investigando para el foro de este módulo me encontré con que las bases SQLite 
 
 ## Estado del proyecto
 
-Módulo 5. Diseño cerrado, stack definido y decisiones de almacenamiento tomadas. El proyecto de Android Studio está en creación y el código de la primera versión (lista de libros, alta y orden persistido) tiene que estar publicado acá antes del módulo 7.
+Módulo 5. El proyecto está en `MiBookshelf/` y compila. Lo que ya funciona: cargar un libro, verlo en la lista, borrarlo, y elegir el orden de la lista con la elección guardada entre sesiones.
+
+Lo que falta para la primera versión: pantalla de detalle, editar un libro, buscador, marcar como prestado, colecciones y foto de portada.
+
+Para abrirlo: Android Studio → Open → elegir la carpeta `MiBookshelf`.
 
 ## Referencias
 

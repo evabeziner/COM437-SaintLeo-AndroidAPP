@@ -20,7 +20,17 @@ Cambios del proyecto MiBookshelf, del más reciente al más viejo. Cada entrada 
 - Cerré la API mínima en 24 (Android 7.0), con `compileSdk` y `targetSdk` 36.
 - Partí la lista de funcionalidades en dos grupos, lo que entra en la primera versión y lo que queda para después. Antes era una lista plana.
 - Me quedó abierta una decisión de seguridad: si cifrar o no la base, porque la tabla de libros guarda a quién le presté cada uno.
-- Empecé el proyecto de Android Studio dentro de este repositorio.
+
+**Código**
+
+- Creé el proyecto de Android Studio (`MiBookshelf/`) dentro de este repositorio.
+- Agregué el plugin KSP y las dependencias de Room 2.8.4.
+- Escribí la entidad `Libro`, el DAO `LibroDao`, la base `AppDatabase` con patrón Singleton y el `LibroViewModel`.
+- Armé la pantalla principal en Compose: formulario de alta, lista con `LazyColumn` y borrado.
+- El selector de orden (autor, título, fecha en que lo agregué) guarda la elección en `SharedPreferences`, así que la app abre como la dejé. Cada criterio es una consulta distinta en el DAO, el orden lo hace SQLite y no yo recorriendo la lista.
+- Bajé a mano las versiones de `core-ktx` (1.19.0 a 1.18.0) y `lifecycle` (2.11.0 a 2.10.0). Las que puso Android Studio por defecto exigen compilar contra API 37 y el proyecto compila contra 36, así que el build fallaba antes de arrancar. Quedaron en las mismas versiones del ejemplo de clase.
+
+Falta todavía: pantalla de detalle, editar, buscador, marcar prestado, colecciones y foto de portada.
 
 ---
 
