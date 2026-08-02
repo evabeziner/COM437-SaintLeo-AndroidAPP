@@ -1,0 +1,16 @@
+# Android Studio / Gradle
+*.iml
+.gradle/
+/local.properties
+.idea/
+.DS_Store
+build/
+/captures
+.externalNativeBuild
+.cxx
+/app/release/
+
+# Firmas y claves: nunca subir a un repo publico
+*.jks
+*.keystore
+keystore.properties
