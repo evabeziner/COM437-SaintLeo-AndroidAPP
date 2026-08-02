@@ -145,7 +145,11 @@ Investigando para el foro de este módulo me encontré con que las bases SQLite 
 
 ## Estado del proyecto
 
-Módulo 5. El proyecto está en `MiBookshelf/` y compila. Lo que ya funciona: cargar un libro, verlo en la lista, borrarlo, y elegir el orden de la lista con la elección guardada entre sesiones.
+Módulo 5. El proyecto está en `MiBookshelf/` y corre en el emulador. Lo que ya funciona: cargar un libro, verlo en la lista, borrarlo, y elegir el orden de la lista con la elección guardada entre sesiones.
+
+<img src="docs/app-modulo5.png" width="320" alt="MiBookshelf corriendo en el emulador, con tres libros cargados">
+
+Es fea todavía, y es a propósito: este módulo era de datos, así que puse el esfuerzo en que la base y las preferencias estén bien resueltas. La pantalla de verdad, la del wireframe, viene después.
 
 Lo que falta para la primera versión: pantalla de detalle, editar un libro, buscador, marcar como prestado, colecciones y foto de portada.
 

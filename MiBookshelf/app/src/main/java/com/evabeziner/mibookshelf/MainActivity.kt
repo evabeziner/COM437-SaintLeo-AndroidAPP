@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -29,6 +30,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.evabeziner.mibookshelf.ui.theme.MiBookshelfTheme
 
@@ -89,25 +91,44 @@ fun PantallaMisLibros(
 
         Text(text = "Agregar un libro", style = MaterialTheme.typography.titleMedium)
 
+        // El padding de abajo separa un campo del otro. Sin eso, la etiqueta flotante
+        // del campo enfocado se monta sobre el borde del campo de arriba.
+        val campoModifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 8.dp)
+
         OutlinedTextField(
             value = tituloText,
             onValueChange = { tituloText = it },
-            label = { Text("Titulo") }
+            label = { Text("Titulo") },
+            modifier = campoModifier
         )
         OutlinedTextField(
             value = autorText,
             onValueChange = { autorText = it },
-            label = { Text("Autor") }
+            label = { Text("Autor") },
+            modifier = campoModifier
         )
         OutlinedTextField(
             value = anioText,
-            onValueChange = { anioText = it },
-            label = { Text("Año") }
+            // Solo dejo escribir digitos. Si la tecla no es un numero, no la guardo,
+            // asi el campo no acepta letras en primer lugar.
+            onValueChange = { nuevoTexto ->
+                if (nuevoTexto.all { it.isDigit() }) anioText = nuevoTexto
+            },
+            label = { Text("Año") },
+            // Abre el teclado numerico en vez del de letras.
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = campoModifier
         )
         OutlinedTextField(
             value = puntajeText,
-            onValueChange = { puntajeText = it },
-            label = { Text("Puntaje (0 a 5)") }
+            onValueChange = { nuevoTexto ->
+                if (nuevoTexto.all { it.isDigit() }) puntajeText = nuevoTexto
+            },
+            label = { Text("Puntaje (0 a 5)") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = campoModifier
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -124,7 +145,10 @@ fun PantallaMisLibros(
                         // un numero. En el año eso esta bien, porque admite vacio.
                         anio = anioText.toIntOrNull(),
                         // En el puntaje no admito vacio, asi que si no es numero va 0.
-                        puntaje = puntajeText.toIntOrNull() ?: 0,
+                        // coerceIn lo encierra entre 0 y 5: si escribo 47, guarda 5.
+                        // El campo son estrellas, y una escala que no tiene tope
+                        // deja de servir para comparar un libro con otro.
+                        puntaje = (puntajeText.toIntOrNull() ?: 0).coerceIn(0, 5),
                         // La fecha la pone la app, no yo. Es lo que despues permite
                         // ordenar por "fecha en que lo agregue".
                         fechaAgregado = System.currentTimeMillis()

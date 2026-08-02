@@ -30,6 +30,12 @@ Cambios del proyecto MiBookshelf, del más reciente al más viejo. Cada entrada 
 - El selector de orden (autor, título, fecha en que lo agregué) guarda la elección en `SharedPreferences`, así que la app abre como la dejé. Cada criterio es una consulta distinta en el DAO, el orden lo hace SQLite y no yo recorriendo la lista.
 - Bajé a mano las versiones de `core-ktx` (1.19.0 a 1.18.0) y `lifecycle` (2.11.0 a 2.10.0). Las que puso Android Studio por defecto exigen compilar contra API 37 y el proyecto compila contra 36, así que el build fallaba antes de arrancar. Quedaron en las mismas versiones del ejemplo de clase.
 
+Arreglos después de probarla en el emulador:
+
+- Separé los campos del formulario. Sin separación, la etiqueta flotante del campo enfocado se montaba sobre el borde del campo de arriba.
+- Año y Puntaje abren teclado numérico y descartan cualquier tecla que no sea un dígito, así el campo no acepta letras en primer lugar.
+- El puntaje queda encerrado entre 0 y 5 con `coerceIn`. Antes podía guardar un libro con puntaje 47, y una escala sin tope no sirve para comparar un libro con otro.
+
 Falta todavía: pantalla de detalle, editar, buscador, marcar prestado, colecciones y foto de portada.
 
 ---
