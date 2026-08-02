@@ -50,7 +50,7 @@ Esa parte de configuración es, en cierto sentido, la parte administradora de mi
 
 ## 5. Funcionalidad
 
-Lo que quiero que haga la app. Ahora lo tengo ordenado por prioridad, porque ya sé que no llego a todo en un cuatrimestre:
+Lo que quiero que haga la app. Ahora lo tengo ordenado por prioridad, porque ya sé que no llego a todo en un bimestre:
 
 **Primera versión (lo que voy a programar en este curso)**
 
